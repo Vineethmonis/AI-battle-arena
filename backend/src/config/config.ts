@@ -1,5 +1,5 @@
-import { config } from "dotenv";
-config();
+import dotenv from "dotenv";
+dotenv.configconfig();
 
 type CONFIG = {
     readonly GOOGLE_API_KEY: string;
