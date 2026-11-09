@@ -83,4 +83,10 @@ const graph = new StateGraph(state)
     .addEdge("judge_node", END)
     .compile()
 
-export default graph;
+export default async function (problem: string){
+    const result = await graph.invoke({
+        problem: problem
+    });
+
+    return result;
+};
