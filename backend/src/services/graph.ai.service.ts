@@ -66,7 +66,7 @@ const judgeNode: GraphNode<typeof state> = async (state) => {
     } = judgeResponse.structuredResponse;
 
     return {
-        judge:{
+        judge: {
             solution_1_score,
             solution_2_score,
             solution_1_reasoning,
@@ -74,3 +74,13 @@ const judgeNode: GraphNode<typeof state> = async (state) => {
         }
     }
 }
+
+const graph = new StateGraph(state)
+    .addNode("solution", solutionNode)
+    .addNode("judge_node", judgeNode)
+    .addEdge(START, "solution")
+    .addEdge("solution", "judge_node")
+    .addEdge("judge_node", END)
+    .compile()
+
+export default graph;
